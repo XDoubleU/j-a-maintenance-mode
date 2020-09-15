@@ -4,7 +4,7 @@
  * Plugin Name:        Just Another Maintenance Mode
  * Plugin URI:         https://github.com/XDoubleU/j-a-maintenance-mode
  * Description:        Adds maintenance mode.
- * Version:            1.0.0-alpha
+ * Version:            1.0.1-alpha
  * Author:             Xander Warszawski
  * Author URI:         https://xdoubleu.com
  * License:            GNU General Public License v3.0
@@ -24,9 +24,7 @@ add_action('wp_enqueue_scripts', 'maintenance_mode_enqueue_scripts');
 /* START Maintenance Mode front-end*/
 function display_search_bar () {
   /* Check if user is logged in*/
-  $user = wp_get_current_user();
-  $is_logged_in = $user->exists();
-  if(!$is_logged_in){
+  if(not is_user_logged_in()){
     echo $html;
   }
 }
