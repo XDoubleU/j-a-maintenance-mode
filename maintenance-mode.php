@@ -4,7 +4,7 @@
  * Plugin Name:        Just Another Maintenance Mode
  * Plugin URI:         https://github.com/XDoubleU/j-a-maintenance-mode
  * Description:        Adds maintenance mode.
- * Version:            1.0.4-alpha
+ * Version:            1.0.0
  * Author:             Xander Warszawski
  * Author URI:         https://xdoubleu.com
  * License:            GNU General Public License v3.0
@@ -39,8 +39,7 @@ function maintenance_mode_options_page(){
         <tr valign="top">
           <th scope="row"><label for="maintenance_mode_active">Maintenance Mode</label></th>
           <td>
-            <input name="maintenance_mode_active" type="checkbox" value="<?php echo $is_enabled;?>" <?php echo checked( $is_enabled === "on");?>>
-          <?php  echo $is_enabled; ?>
+            <input name="maintenance_mode_active" value="on" type="checkbox" <?php echo checked( $is_enabled === "on");?>>
           </td>
         </tr>
       </table>
@@ -53,7 +52,7 @@ function maintenance_mode_options_page(){
 /* START Maintenance Mode front-end */
 function display_maintenance_mode(){
   $is_enabled = get_option('maintenance_mode_active');
-  if($is_enabled === "true"){
+  if($is_enabled === "on"){
     $request_uri =  str_replace("/", '',"$_SERVER[REQUEST_URI]");
     if(!is_user_logged_in() && $request_uri != "hackerman"){
       $protocol = $_SERVER["SERVER_PROTOCOL"];
